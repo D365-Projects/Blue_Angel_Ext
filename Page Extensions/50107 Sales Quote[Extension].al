@@ -15,7 +15,7 @@ pageextension 50107 SalesQuoteExt extends "Sales Quote"
             {
                 ApplicationArea = All;
                 Caption = 'Follow Up Date';
-                ToolTip = 'Date to follow up on the Sales Quote';
+                ToolTip = 'Date to follow up Sales Quote';
                 ShowMandatory = true;
             }
             field("Project Report"; Rec."Project")
