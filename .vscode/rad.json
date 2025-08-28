@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[{"Id":50107,"Kind":16,"Name":"SalesQuoteExt","Namespace":""}],"Removed":[]}
+﻿{"Added":[],"Modified":[{"Id":50103,"Kind":17,"Name":"SalesLineExtension","Namespace":""},{"Id":50107,"Kind":16,"Name":"SalesQuoteExt","Namespace":""},{"Id":50105,"Kind":17,"Name":"SalesHederExt","Namespace":""},{"Id":50104,"Kind":17,"Name":"PurchaseLineExtension","Namespace":""}],"Removed":[]}

@@ -18,36 +18,20 @@ tableextension 50105 SalesHederExt extends "Sales Header"
         {
             Caption = 'Project';
             DataClassification = ToBeClassified;
-            // trigger OnValidate()
-            // var
-            // begin
-            //     Rec.Device := false;
-            //     Rec."T&M" := false;
-            // end;
+
 
         }
         field(50103; "Device"; Boolean)
         {
             Caption = 'Device';
             DataClassification = ToBeClassified;
-            // trigger OnValidate()
-            // var
-            // begin
-            //     Rec.Project := false;
-            //     Rec."T&M" := false;
 
-            // end;
         }
         field(50104; "T&M"; Boolean)
         {
             Caption = 'T&M';
             DataClassification = ToBeClassified;
-            // trigger OnValidate()
-            // var
-            // begin
-            //     Rec.Project := false;
-            //     Rec.Device := false;
-            // end;
+
         }
 
 

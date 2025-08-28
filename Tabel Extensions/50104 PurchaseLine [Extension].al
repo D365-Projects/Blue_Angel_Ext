@@ -18,12 +18,12 @@ tableextension 50104 PurchaseLineExtension extends "Purchase Line"
 
     keys
     {
-        // Add changes to keys here
+
     }
 
     fieldgroups
     {
-        // Add changes to field groups here
+
     }
 
     var

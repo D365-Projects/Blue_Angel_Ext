@@ -32,12 +32,12 @@ tableextension 50103 SalesLineExtension extends "Sales Line"
 
     keys
     {
-        // Add changes to keys here
+
     }
 
     fieldgroups
     {
-        // Add changes to field groups here
+
     }
 
     var
