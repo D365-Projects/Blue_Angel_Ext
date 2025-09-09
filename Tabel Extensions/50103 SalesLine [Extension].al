@@ -28,6 +28,16 @@ tableextension 50103 SalesLineExtension extends "Sales Line"
             Caption = 'Service Period To';
             DataClassification = ToBeClassified;
         }
+        field(50104; "Sales Margin_SG"; Decimal)
+        {
+            Caption = 'Sales Margin';
+            DataClassification = ToBeClassified;
+        }
+        field(50105; "Net Price_SG"; Decimal)
+        {
+            Caption = 'Net Price';
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
