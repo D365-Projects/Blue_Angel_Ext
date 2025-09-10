@@ -11,6 +11,7 @@ pageextension 50100 Salesquotesubfomr extends "Sales Quote Subform"
                 Item_lrec.SetRange("No.", rec."No.");
                 if Item_lrec.Find() then
                     rec.SKU := Item_lrec."Vendor Item No.";
+                Rec."UPC_SG" := Item_lrec.GTIN;
             end;
         }
         addafter("No.")
@@ -21,6 +22,12 @@ pageextension 50100 Salesquotesubfomr extends "Sales Quote Subform"
                 ApplicationArea = All;
                 Caption = 'SKU';
                 ToolTip = 'Stock Keeping Unit';
+            }
+            field(UPC; Rec.UPC_SG)
+            {
+                ApplicationArea = All;
+                Caption = 'UPC';
+                ToolTip = 'Universal Product Code';
             }
         }
         // Add changes to page layout here

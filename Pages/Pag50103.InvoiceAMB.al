@@ -5,7 +5,7 @@ page 50103 "Sherweb Invoices"
     ApplicationArea = All;
     Caption = 'Sherweb Invoices';
     PageType = Card;
-    SourceTable = "Invoice AMB";
+    SourceTable = "Invoice SG";
 
     layout
     {

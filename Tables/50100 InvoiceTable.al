@@ -1,4 +1,4 @@
-table 50100 "Invoice AMB"
+table 50100 "Invoice SG"
 {
     Caption = 'Invoice Data';
     DataClassification = ToBeClassified;

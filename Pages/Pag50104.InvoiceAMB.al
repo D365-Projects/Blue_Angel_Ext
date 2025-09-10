@@ -6,7 +6,7 @@ page 50104 "Sherweb_Invoices"
     Caption = 'Sherweb Invoices';
     PageType = Worksheet;
     ;
-    SourceTable = "Invoice AMB";
+    SourceTable = "Invoice SG";
     CardPageId = "Sherweb Invoices";
     AutoSplitKey = true;
     DelayedInsert = true;
@@ -193,10 +193,10 @@ page 50104 "Sherweb_Invoices"
                 Promoted = true;
                 PromotedCategory = Process;
                 ApplicationArea = All;
-                ToolTip = 'Create Purchase Order from Invoice AMB data.';
+                ToolTip = 'Create Purchase Order from Invoice SG data.';
                 trigger OnAction()
                 var
-                    InvoiceRec: Record "Invoice AMB";
+                    InvoiceRec: Record "Invoice SG";
                     PurchaseHeader: Record "Purchase Header";
                     PurchaseOrderNo: Code[20];
                 begin
@@ -213,7 +213,7 @@ page 50104 "Sherweb_Invoices"
                 Promoted = true;
                 PromotedCategory = Process;
                 ApplicationArea = All;
-                ToolTip = 'Create Sales Order from Invoice AMB data.';
+                ToolTip = 'Create Sales Order from Invoice SG data.';
                 trigger OnAction()
 
                 var
@@ -275,7 +275,7 @@ page 50104 "Sherweb_Invoices"
 
     procedure ImportExcelData()
     var
-        SOImportBuffer: Record "Invoice AMB";
+        SOImportBuffer: Record "Invoice SG";
         RowNo: Integer;
         ColNo: Integer;
         LineNo: Integer;
@@ -384,13 +384,13 @@ page 50104 "Sherweb_Invoices"
             exit('');
     end;
 
-    procedure CreatePurchaseOrder(Invoice_lrec: Record "Invoice AMB")
+    procedure CreatePurchaseOrder(Invoice_lrec: Record "Invoice SG")
     var
         Purchasehdr_lrec: Record "Purchase Header";
         Cust_lrec: Record Customer;
         Purchaseandrec: Record "Purchases & Payables Setup";
         NoSeries: Codeunit "No. Series";
-        AMBInvoice_lrec: Record "Invoice AMB";
+        AMBInvoice_lrec: Record "Invoice SG";
         VendorRec: Record Vendor;
         VendorSelected: Boolean;
         vendorNo: Code[20];
@@ -432,7 +432,7 @@ page 50104 "Sherweb_Invoices"
 
 
 
-    procedure CreatePurchaseLine(Purchasehdr: Record "Purchase Header"; Invoice_lrec: Record "Invoice AMB")
+    procedure CreatePurchaseLine(Purchasehdr: Record "Purchase Header"; Invoice_lrec: Record "Invoice SG")
     var
         Purchase_lrec: Record "Purchase Line";
         Nextno: Integer;
@@ -465,7 +465,7 @@ page 50104 "Sherweb_Invoices"
         CustomerRec: Record Customer;
         SalesSetup: Record "Sales & Receivables Setup";
         NoSeriesMgt: Codeunit "No. Series";
-        InvoiceAMBRec: Record "Invoice AMB";
+        InvoiceAMBRec: Record "Invoice SG";
         OrgList: List of [text[100]];
         OrgCode: text[100];
     begin
@@ -502,7 +502,7 @@ page 50104 "Sherweb_Invoices"
     end;
 
 
-    procedure CreateSalesLine(Saleshdr: Record "Sales Header"; Invoice_lrec: Record "Invoice AMB")
+    procedure CreateSalesLine(Saleshdr: Record "Sales Header"; Invoice_lrec: Record "Invoice SG")
     var
         salesLine_lrec: Record "Sales Line";
         Nextno: Integer;

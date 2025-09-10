@@ -15,5 +15,4 @@ codeunit 50102 "DirectUnitCost Event"
             end;
         end;
     end;
-
 }
