@@ -2,6 +2,47 @@ pageextension 50110 "Sales Quote Line" extends "Sales Quote Subform"
 {
     layout
     {
+        modify("No.")
+        {
+            trigger OnAfterValidate()
+            var
+                Item_lrec: Record Item;
+            begin
+                if rec.Quantity <> 0 then begin
+                    Rec."Net Price_SG" := (Rec."Line Amount" - rec."Inv. Discount Amount") / Rec.Quantity;
+                    Rec."Sales Margin_SG" := Rec."Net Price_SG" - Rec."Unit Cost";
+                    Rec."Margin %" := ROUND((Rec."Sales Margin_SG" / Rec."Net Price_SG") * 100, 0.01);
+                    rec.Modify();
+                end;
+                Item_lrec.SetRange("No.", rec."No.");
+                if Item_lrec.Find() then begin
+                    rec.SKU := Item_lrec."Vendor Item No.";
+                    Rec."UPC_SG" := Item_lrec.GTIN;
+                end;
+
+            end;
+        }
+        modify("Description 2")
+        {
+            Visible = true;
+            Caption = 'Notes';
+        }
+        addafter("Description 2")
+        {
+            field(SKU; Rec.SKU)
+            {
+                ApplicationArea = All;
+                Caption = 'SKU';
+                ToolTip = 'Stock Keeping Unit';
+            }
+            field(UPC; Rec.UPC_SG)
+            {
+                ApplicationArea = All;
+                Caption = 'UPC';
+                ToolTip = 'Universal Product Code';
+            }
+
+        }
         addafter("Unit Price")
         {
             field("Sales Margin_SG"; Rec."Sales Margin_SG")
@@ -11,6 +52,10 @@ pageextension 50110 "Sales Quote Line" extends "Sales Quote Subform"
             field("Margin %"; Rec."Margin %")
             {
                 ApplicationArea = all;
+            }
+            field("Shipping Cost"; Rec."Shipping Cost")
+            {
+                ApplicationArea = All;
             }
         }
         modify("Allow Invoice Disc.")
@@ -67,20 +112,7 @@ pageextension 50110 "Sales Quote Line" extends "Sales Quote Subform"
                 rec.Modify();
             end;
         }
-        modify("No.")
-        {
-            trigger OnAfterValidate()
-            var
-                Item_Lrec: Record Item;
-            begin
-                if rec.Quantity <> 0 then begin
-                    Rec."Net Price_SG" := (Rec."Line Amount" - rec."Inv. Discount Amount") / Rec.Quantity;
-                    Rec."Sales Margin_SG" := Rec."Net Price_SG" - Rec."Unit Cost";
-                    Rec."Margin %" := ROUND((Rec."Sales Margin_SG" / Rec."Net Price_SG") * 100, 0.01);
-                    rec.Modify();
-                end;
-            end;
-        }
+
         modify("Unit Price")
         {
             trigger OnAfterValidate()

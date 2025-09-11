@@ -55,6 +55,12 @@ tableextension 50103 SalesLineExtension extends "Sales Line"
             DataClassification = ToBeClassified;
 
         }
+        field(50109; "Shipping Cost"; Decimal)
+        {
+            Caption = 'Shipping Cost';
+            DataClassification = ToBeClassified;
+
+        }
     }
 
     keys

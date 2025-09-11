@@ -7,7 +7,7 @@ reportextension 50102 TimesandMeterial_SG extends "Standard Sales - Quote"
         {
             column(SKU; SKU)
             {
-                Caption = 'SKU';
+
             }
 
         }

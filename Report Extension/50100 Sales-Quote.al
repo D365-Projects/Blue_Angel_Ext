@@ -4,11 +4,11 @@ reportextension 50100 SalesQuoteSG extends "Devices Sales Quote"
     {
         add(Line)
         {
-
-            column("UPC_SG"; "UPC_SG")
+            column(UPC_SG; UPC_SG)
             {
-                Caption = 'UPC_SG';
             }
+
+
         }
         // Add changes to dataitems and columns here
     }

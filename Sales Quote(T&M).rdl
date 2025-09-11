@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-09-10T15:44:14.0984046Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-09-11T12:34:32.5156495Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -35,7 +35,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>11.25338cm</Height>
+                  <Height>10.95705cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -112,7 +112,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Description</Value>
+                                                    <Value>DESCRIPTION</Value>
                                                     <Style>
                                                       <Color>#5392bc</Color>
                                                     </Style>
@@ -224,7 +224,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>Unit Price</Value>
+                                                    <Value>RATE</Value>
                                                     <Style>
                                                       <Color>#5392bc</Color>
                                                     </Style>
@@ -545,7 +545,7 @@
                               </TablixRowHierarchy>
                               <RepeatRowHeaders>true</RepeatRowHeaders>
                               <DataSetName>DataSet_Result</DataSetName>
-                              <Top>8.50457cm</Top>
+                              <Top>8.20824cm</Top>
                               <Left>0cm</Left>
                               <Height>1.36906cm</Height>
                               <Width>18.97865cm</Width>
@@ -628,7 +628,7 @@
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <DataSetName>DataSet_Result</DataSetName>
-                              <Top>7.96346cm</Top>
+                              <Top>7.64596cm</Top>
                               <Left>0.02484cm</Left>
                               <Height>0.4cm</Height>
                               <Width>18.73498cm</Width>
@@ -926,7 +926,7 @@
                                   </FilterValues>
                                 </Filter>
                               </Filters>
-                              <Top>10.0853cm</Top>
+                              <Top>9.7678cm</Top>
                               <Left>11.87945cm</Left>
                               <Height>1.10458cm</Height>
                               <Width>7.0992cm</Width>
@@ -988,8 +988,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.41096cm</Top>
-            <Left>0in</Left>
-            <Height>11.25338cm</Height>
+            <Height>10.95705cm</Height>
             <Width>18.97866cm</Width>
             <Style>
               <Border>
@@ -1035,7 +1034,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>11.77723cm</Top>
+            <Top>11.45973cm</Top>
             <Left>0.04971cm</Left>
             <Height>0.6cm</Height>
             <Width>18.92894cm</Width>
@@ -1068,7 +1067,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>12.82229cm</Top>
+            <Top>12.50479cm</Top>
             <Left>0.02484cm</Left>
             <Height>0.6cm</Height>
             <Width>3.11812cm</Width>
@@ -1102,7 +1101,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox20</rd:DefaultName>
-            <Top>12.82229cm</Top>
+            <Top>12.50479cm</Top>
             <Left>11.74548cm</Left>
             <Height>0.6cm</Height>
             <Width>3.39329cm</Width>
@@ -3232,7 +3231,7 @@
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3396,7 +3395,7 @@
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3560,7 +3559,7 @@
                               <Style>
                                 <FontFamily>Segoe UI</FontFamily>
                                 <FontSize>8pt</FontSize>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3723,7 +3722,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3785,7 +3784,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
-            <Top>0.46055cm</Top>
+            <Top>0.07955cm</Top>
             <Left>0cm</Left>
             <Height>7.74806cm</Height>
             <Width>18.97865cm</Width>

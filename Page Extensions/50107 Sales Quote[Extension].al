@@ -66,16 +66,6 @@ pageextension 50107 SalesQuoteExt extends "Sales Quote"
 
     actions
     {
-        modify(Print)
-        {
-            trigger OnAfterAction()
-            var
-                myInt: Integer;
-            begin
-
-            end;
-        }
-
         addafter(Customer)
         {
 
@@ -142,6 +132,36 @@ pageextension 50107 SalesQuoteExt extends "Sales Quote"
                         Report.RunModal(1304, true, false, Rec)
                     end;
                 }
+                action("Price Sheet")
+                {
+                    Caption = 'Price Sheet';
+                    ApplicationArea = all;
+
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    trigger OnAction()
+                    var
+                        SalesQuoteRec: Record "Sales Header";
+                    begin
+                        CurrPage.SetSelectionFilter(Rec);
+                        Report.RunModal(50103, true, false, Rec)
+                    end;
+                }
+                action("Attach Price Sheet")
+                {
+                    Caption = 'Price Sheet As Attachment';
+                    ApplicationArea = all;
+
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    trigger OnAction()
+                    var
+                        SalesQuoteRec: Record "Sales Header";
+                    begin
+                        CurrPage.SetSelectionFilter(Rec);
+                        Report.RunModal(50103, true, false, Rec)
+                    end;
+                }
             }
         }
     }
@@ -204,6 +224,8 @@ pageextension 50107 SalesQuoteExt extends "Sales Quote"
         // end;
 
     end;
+
+
 
 
 

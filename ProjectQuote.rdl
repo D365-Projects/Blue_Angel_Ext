@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-09-10T15:45:01.9564134Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-09-11T12:36:55.2320767Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -30,7 +30,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.44795cm</Width>
+                  <Width>19.51021cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -655,8 +655,8 @@
                               </TablixRowHierarchy>
                               <RepeatRowHeaders>true</RepeatRowHeaders>
                               <DataSetName>DataSet_Result</DataSetName>
-                              <Top>5.7003cm</Top>
-                              <Left>0.05503cm</Left>
+                              <Top>5.41236cm</Top>
+                              <Left>0.08557cm</Left>
                               <Height>1.54545cm</Height>
                               <Width>19.33063cm</Width>
                               <Style>
@@ -875,8 +875,8 @@
                                   </FilterValues>
                                 </Filter>
                               </Filters>
-                              <Top>7.38686cm</Top>
-                              <Left>10.95716cm</Left>
+                              <Top>7.09892cm</Top>
+                              <Left>11.01944cm</Left>
                               <Height>0.8cm</Height>
                               <Width>8.4285cm</Width>
                               <ZIndex>1</ZIndex>
@@ -2063,7 +2063,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!DocumentNo_Lbl.Value</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>8pt</FontSize>
                                                     </Style>
@@ -2221,7 +2221,7 @@
                               </TablixRowHierarchy>
                               <DataSetName>DataSet_Result</DataSetName>
                               <Top>0.05258cm</Top>
-                              <Left>0.05503cm</Left>
+                              <Left>0.11731cm</Left>
                               <Height>4.78339cm</Height>
                               <Width>19.3929cm</Width>
                               <ZIndex>2</ZIndex>
@@ -2233,38 +2233,90 @@
                                 <FontSize>8pt</FontSize>
                               </Style>
                             </Tablix>
-                            <Textbox Name="Textbox23">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Fields!WorkDescriptionLine.Value</Value>
-                                      <Style>
-                                        <FontStyle>Italic</FontStyle>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style />
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox20</rd:DefaultName>
-                              <Top>4.97708cm</Top>
-                              <Left>0.05503cm</Left>
-                              <Height>0.6cm</Height>
-                              <Width>18.65836cm</Width>
+                            <Tablix Name="Tablix2">
+                              <TablixBody>
+                                <TablixColumns>
+                                  <TablixColumn>
+                                    <Width>19.00002cm</Width>
+                                  </TablixColumn>
+                                </TablixColumns>
+                                <TablixRows>
+                                  <TablixRow>
+                                    <Height>0.4cm</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="WorkDescriptionLine">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!WorkDescriptionLine.Value</Value>
+                                                    <Style>
+                                                      <FontFamily>Segoe UI</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>WorkDescriptionLine</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Color>LightGrey</Color>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <PaddingLeft>5pt</PaddingLeft>
+                                              <PaddingRight>5pt</PaddingRight>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                </TablixRows>
+                              </TablixBody>
+                              <TablixColumnHierarchy>
+                                <TablixMembers>
+                                  <TablixMember />
+                                </TablixMembers>
+                              </TablixColumnHierarchy>
+                              <TablixRowHierarchy>
+                                <TablixMembers>
+                                  <TablixMember>
+                                    <Group Name="Details">
+                                      <Filters>
+                                        <Filter>
+                                          <FilterExpression>=Fields!WorkDescriptionLineNumber.Value</FilterExpression>
+                                          <Operator>Between</Operator>
+                                          <FilterValues>
+                                            <FilterValue DataType="Integer">1</FilterValue>
+                                            <FilterValue DataType="Integer">99999</FilterValue>
+                                          </FilterValues>
+                                        </Filter>
+                                      </Filters>
+                                    </Group>
+                                    <Visibility>
+                                      <Hidden>=Fields!ShowWorkDescription.Value = false</Hidden>
+                                    </Visibility>
+                                  </TablixMember>
+                                </TablixMembers>
+                              </TablixRowHierarchy>
+                              <DataSetName>DataSet_Result</DataSetName>
+                              <Top>4.9418cm</Top>
+                              <Left>0cm</Left>
+                              <Height>0.4cm</Height>
+                              <Width>19.00002cm</Width>
                               <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
                               </Style>
-                            </Textbox>
+                            </Tablix>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <OmitBorderOnPageBreak>true</OmitBorderOnPageBreak>
@@ -2304,7 +2356,7 @@
             <Top>0.09121cm</Top>
             <Left>0.025in</Left>
             <Height>8.26518cm</Height>
-            <Width>19.44795cm</Width>
+            <Width>19.51021cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2433,7 +2485,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>10.27591cm</Height>
+        <Height>10.38174cm</Height>
         <Style />
       </Body>
       <Width>19.63746cm</Width>
