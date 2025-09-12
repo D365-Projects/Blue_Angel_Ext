@@ -61,6 +61,10 @@ page 50104 "Sherweb_Invoices"
                 {
                     ToolTip = 'Specifies the value of the SKU field.', Comment = '%';
                 }
+                field("Customer List Price"; Rec."Customer List Price")
+                {
+                    ToolTip = 'Specifies the value of the Customer List Price field.', Comment = '%';
+                }
                 field(ListPrice; Rec.ListPrice)
                 {
                     ToolTip = 'Specifies the value of the ListPrice field.', Comment = '%';
@@ -316,6 +320,7 @@ page 50104 "Sherweb_Invoices"
                 SOImportBuffer.Qty := 0;
             if not Evaluate(SOImportBuffer.sku, GetValueAtCell(RowNo, 10)) then
                 SOImportBuffer.sku := '';
+
             if not Evaluate(SOImportBuffer.ListPrice, GetValueAtCell(RowNo, 11)) then
                 SOImportBuffer.ListPrice := 0;
             if not Evaluate(SOImportBuffer."Discounted Price NotProrated", GetValueAtCell(RowNo, 12)) then
@@ -366,6 +371,15 @@ page 50104 "Sherweb_Invoices"
                 SOImportBuffer."MD - STATE PUBLIC SERVICE TAX" := 0;
             if not Evaluate(SOImportBuffer."MD-MONTGOMERY COUNTY,TELEPHONE", GetValueAtCell(RowNo, 35)) then
                 SOImportBuffer."MD-MONTGOMERY COUNTY,TELEPHONE" := 0;
+            if not Evaluate(SOImportBuffer."MD-MONTGOMERY COUNTY,TELEPHONE", GetValueAtCell(RowNo, 35)) then
+                SOImportBuffer."MD-MONTGOMERY COUNTY,TELEPHONE" := 0;
+            if SOImportBuffer."Discounted Price NotProrated" <> 0.00 then
+                if SOImportBuffer.UnitPrice <> 0.00 then begin
+                    SOImportBuffer."Customer List Price" := (SOImportBuffer.UnitPrice / SOImportBuffer."Discounted Price NotProrated") * SOImportBuffer.ListPrice
+                end
+
+                else
+                    SOImportBuffer."Customer List Price" := 0.00;
             SOImportBuffer.Insert();
         end;
         Message('Data imported successfully from Excel.');
@@ -401,15 +415,15 @@ page 50104 "Sherweb_Invoices"
         end else
             Error('You must select a vendor.');
         Purchasehdr_lrec.Reset();
-        Purchasehdr_lrec.SetRange("Document Type", Purchasehdr_lrec."Document Type"::Order);
+        Purchasehdr_lrec.SetRange("Document Type", Purchasehdr_lrec."Document Type"::Invoice);
         Purchasehdr_lrec.SetRange("Vendor Invoice No.", Invoice_lrec.InvoiceNo);
         if Purchasehdr_lrec.FindFirst() then
             Error('Purchase Order with Vendor Invoice No. %1 already exists.', Invoice_lrec.InvoiceNo);
         Purchaseandrec.Get();
         Purchaseandrec.TestField("Order Nos.");
         Purchasehdr_lrec.Init();
-        Purchasehdr_lrec."No." := NoSeries.GetNextNo(Purchaseandrec."Order Nos.", Today, true);
-        Purchasehdr_lrec."Document Type" := Purchasehdr_lrec."Document Type"::Order;
+        Purchasehdr_lrec."No." := NoSeries.GetNextNo(Purchaseandrec."Invoice Nos.", Today, true);
+        Purchasehdr_lrec."Document Type" := Purchasehdr_lrec."Document Type"::Invoice;
         Purchasehdr_lrec.Validate("Buy-from Vendor No.", vendorNo);
         Purchasehdr_lrec."Document Date" := Today();
         Purchasehdr_lrec."Vendor Invoice No." := Invoice_lrec.InvoiceNo;
@@ -438,7 +452,7 @@ page 50104 "Sherweb_Invoices"
         Nextno: Integer;
     begin
         Purchase_lrec.SetRange("Document No.", Purchasehdr."No.");
-        Purchase_lrec.SetRange("Document Type", Purchasehdr."Document Type"::Order);
+        Purchase_lrec.SetRange("Document Type", Purchasehdr."Document Type"::Invoice);
         if Purchase_lrec.FindLast() then
             Nextno := Purchase_lrec."Line No." + 10000
         else
@@ -483,22 +497,36 @@ page 50104 "Sherweb_Invoices"
             if not CustomerRec.FindFirst() then
                 Error('Customer with Organization %1 not found.', OrgCode);
 
-            SalesHdr.Init();
-            SalesHdr."No." := NoSeriesMgt.GetNextNo(SalesSetup."Order Nos.", Today, true);
-            SalesHdr."Document Type" := SalesHdr."Document Type"::Order;
-            SalesHdr.Validate("Sell-to Customer No.", CustomerRec."No.");
-            SalesHdr."External Document No." := Rec.InvoiceNo;
-            SalesHdr."Document Date" := Today();
-            SalesHdr.Insert();
-            InvoiceAMBRec.Reset();
-            InvoiceAMBRec.SetRange("Organization", OrgCode);
-            if InvoiceAMBRec.FindSet() then
+            SalesHdr.Reset();
+            SalesHdr.SetRange("Document Type", SalesHdr."Document Type"::Invoice);
+            SalesHdr.SetRange("Sell-to Customer No.", CustomerRec."No.");
+            SalesHdr.SetRange("External Document No.", InvoiceAMBRec.InvoiceNo);
+
+            if not SalesHdr.FindFirst() then begin
+
+                SalesHdr.Init();
+                SalesHdr."No." := NoSeriesMgt.GetNextNo(SalesSetup."Invoice Nos.", Today, true);
+                SalesHdr."Document Type" := SalesHdr."Document Type"::Invoice;
+                SalesHdr.Validate("Sell-to Customer No.", CustomerRec."No.");
+                SalesHdr."External Document No." := Rec.InvoiceNo;
+                SalesHdr."Document Date" := Today();
+                SalesHdr.Insert();
+                InvoiceAMBRec.Reset();
+                InvoiceAMBRec.SetRange("Organization", OrgCode);
+                if InvoiceAMBRec.FindSet() then
                 repeat
                     CreateSalesLine(SalesHdr, InvoiceAMBRec);
                 until InvoiceAMBRec.Next() = 0;
 
-            Message('Sales Order created for Organization: %1', OrgCode);
+                Message('Sales Order created for Organization: %1', OrgCode);
+
+            end
+            else begin
+                Message('Sales Invoice already exists for Customer %1 and External Document No. %2',
+                    OrgCode, InvoiceAMBRec.InvoiceNo);
+            end;
         end;
+
     end;
 
 
@@ -508,7 +536,7 @@ page 50104 "Sherweb_Invoices"
         Nextno: Integer;
     begin
         salesLine_lrec.SetRange("Document No.", Saleshdr."No.");
-        salesLine_lrec.SetRange("Document Type", Saleshdr."Document Type"::Order);
+        salesLine_lrec.SetRange("Document Type", Saleshdr."Document Type"::Invoice);
         if salesLine_lrec.FindLast() then
             Nextno := salesLine_lrec."Line No." + 10000
         else
@@ -522,8 +550,10 @@ page 50104 "Sherweb_Invoices"
         salesLine_lrec.Validate("Service Period From", Invoice_lrec."ServicePeriodFrom");
         salesLine_lrec.Validate("Service Period To", Invoice_lrec."ServicePeriodTo");
         salesLine_lrec.Validate(Quantity, Invoice_lrec.Qty);
-        if Invoice_lrec.UnitPrice <> 0 then
-            salesLine_lrec.Validate("Unit Price", Invoice_lrec.UnitPrice);
+        salesLine_lrec.Validate("Unit Cost", Invoice_lrec.UnitPrice);
+        if Invoice_lrec.UnitPrice <> 0 then begin
+            salesLine_lrec.Validate("Unit Price", Invoice_lrec."Customer List Price")
+        end;
         if Invoice_lrec.LineTotal <> 0 then
             salesLine_lrec.Validate("Line Amount", Invoice_lrec.LineTotal);
         salesLine_lrec.Insert();

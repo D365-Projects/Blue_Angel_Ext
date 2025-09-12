@@ -36,7 +36,7 @@ codeunit 50104 "Dimension Handler"
                     def_Dimension."Value Posting" := def_Dimension."Value Posting"::"Same Code";
                     def_Dimension.Modify(true);
                 end;
-                Message('Dimension "%1" code updated from "%2" to "%3" for Customer "%4".', GlobalDimCode, xCustomer."No.", Customer."No.", Customer.Name);
+
             end;
         end else begin
             if not DimValue.Get(GlobalDimCode, Customer."No.") then begin
@@ -46,13 +46,11 @@ codeunit 50104 "Dimension Handler"
                 DimValue.Name := Customer.Name;
                 DimValue.Insert(true);
 
-                Message('Dimension "%1" with value "%2" assigned to Customer "%3".', GlobalDimCode, Customer."No.", Customer.Name);
+
             end else begin
                 if DimValue.Name <> Customer.Name then begin
                     DimValue.Name := Customer.Name;
                     DimValue.Modify(true);
-
-                    Message('Dimension "%1" for Customer "%2" updated.', GlobalDimCode, Customer."No.");
                 end;
             end;
         end;
@@ -86,12 +84,11 @@ codeunit 50104 "Dimension Handler"
     procedure CreateAndAssignOrUpdateDimension(var Job: Record Job; xJob: Record Job)
     var
         DimValue: Record "Dimension Value";
-        DimMgt: Codeunit "DimensionManagement";
+        DimMgt: Codeunit DimensionManagement;
         GLSetup: Record "General Ledger Setup";
         def_Dimension: Record "Default Dimension";
         GlobalDimCode: Code[20];
-        IsNew: Boolean;
-    begin
+begin
         GLSetup.Get();
         GlobalDimCode := GLSetup."Shortcut Dimension 6 Code";
 
@@ -103,7 +100,6 @@ codeunit 50104 "Dimension Handler"
                 DimValue.Code := Job."No.";
                 DimValue.Name := Job.Description;
                 DimValue.Modify(true);
-                Message('Dimension "%1" code updated from "%2" to "%3" for Job "%4".', GlobalDimCode, xJob."No.", Job."No.", Job.Description);
             end;
         end else begin
             if not DimValue.Get(GlobalDimCode, Job."No.") then begin
@@ -112,6 +108,7 @@ codeunit 50104 "Dimension Handler"
                 DimValue.Code := Job."No.";
                 DimValue.Name := Job.Description;
                 DimValue.Insert(true);
+
                 def_Dimension.SetRange("Table ID", Database::Job);
                 def_Dimension.SetRange("No.", Job."No.");
                 def_Dimension.SetRange("Dimension Code", GlobalDimCode);
@@ -119,32 +116,34 @@ codeunit 50104 "Dimension Handler"
                     def_Dimension."Value Posting" := def_Dimension."Value Posting"::"Same Code";
                     def_Dimension.Modify(true);
                 end;
-                Message('Dimension "%1" with value "%2" assigned to Job "%3".', GlobalDimCode, Job."No.", Job.Description);
             end else begin
                 if DimValue.Name <> Job.Description then begin
                     DimValue.Name := Job.Description;
                     DimValue.Modify(true);
-                    Message('Dimension "%1" for Job "%2" updated.', GlobalDimCode, Job."No.");
                 end;
             end;
         end;
         Job.Validate("SG ShortcutDim6Code", Job."No.");
         Job."SG ShortcutDim6Code" := Job."No.";
         Job.Modify(true);
-        def_Dimension.SetRange("Table ID", Database::job);
+        def_Dimension.SetRange("Table ID", Database::Job);
         def_Dimension.SetRange("No.", Job."No.");
         def_Dimension.SetRange("Dimension Code", GlobalDimCode);
         if def_Dimension.FindFirst() then begin
             def_Dimension."Value Posting" := def_Dimension."Value Posting"::"Same Code";
             def_Dimension.Modify(true);
         end;
+
         DimMgt.SaveDefaultDim(
             Database::Job,
             Job."No.",
             6,
             Job."No."
         );
+
+
     end;
+
 
 }
 

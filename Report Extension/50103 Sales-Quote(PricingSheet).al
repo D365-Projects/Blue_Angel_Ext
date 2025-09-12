@@ -4,7 +4,7 @@ reportextension 50103 SalesQuotePricingSheetSG extends "Pricing Sheet Sales Quot
     {
         add(Line)
         {
-
+            column(Unit_Price; "Unit Price") { }
 
         }
         // Add changes to dataitems and columns here

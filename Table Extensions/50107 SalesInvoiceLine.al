@@ -32,6 +32,6 @@ tableextension 50107 SalesInvoiceLine extends "Sales Invoice Line"
 
     }
 
-    var
-        myInt: Integer;
+
+
 }

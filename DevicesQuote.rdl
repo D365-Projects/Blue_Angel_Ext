@@ -9,7 +9,7 @@
       <am:Name>MSRB</am:Name>
       <am:Version>15.0.20283.0</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-09-11T12:33:47.8049113Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-09-12T12:42:20.6608764Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -35,7 +35,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>10.64486cm</Height>
+                  <Height>10.76653cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -666,7 +666,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Description_Line.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
                                                     </Style>
                                                   </TextRun>
@@ -888,7 +888,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Description_Line.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -918,7 +918,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!UPC_SG.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -948,7 +948,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Line_sku.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -978,7 +978,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!Quantity_Line.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1011,7 +1011,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!UnitOfMeasure.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1044,7 +1044,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!UnitPrice.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1077,7 +1077,7 @@
                                                   <TextRun>
                                                     <Value>=Fields!LineAmount_Line.Value</Value>
                                                     <Style>
-                                                      <FontSize>8pt</FontSize>
+                                                      <FontSize>7pt</FontSize>
                                                     </Style>
                                                   </TextRun>
                                                 </TextRuns>
@@ -1211,7 +1211,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.2316cm</Top>
             <Left>0.0591in</Left>
-            <Height>10.64486cm</Height>
+            <Height>10.76653cm</Height>
             <Width>19.04977cm</Width>
             <Style>
               <Border>
@@ -2549,7 +2549,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!DocumentNo_Lbl.Value</Value>
+                                  <Value>Sales Quote No.</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3184,14 +3184,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentMethodDescription_Lbl3">
+                        <Textbox Name="ShipmentMethodDescription_Lbl3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentMethodDescription_Lbl.Value</Value>
+                                  <Value>=Fields!ShipmentMethodDescription_Lbl.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3200,7 +3200,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentMethodDescription_Lbl</rd:DefaultName>
+                          <rd:DefaultName>ShipmentMethodDescription_Lbl</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3213,14 +3213,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentMethodDescription3">
+                        <Textbox Name="ShipmentMethodDescription3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentMethodDescription.Value</Value>
+                                  <Value>=Fields!ShipmentMethodDescription.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3231,7 +3231,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentMethodDescription</rd:DefaultName>
+                          <rd:DefaultName>ShipmentMethodDescription</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3344,14 +3344,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LegalEntityType_Lbl3">
+                        <Textbox Name="Textbox119">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LegalEntityType_Lbl.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3360,7 +3360,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LegalEntityType_Lbl</rd:DefaultName>
+                          <rd:DefaultName>Textbox119</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3373,14 +3373,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LegalEntityType3">
+                        <Textbox Name="Textbox120">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LegalEntityType.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3391,7 +3391,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LegalEntityType</rd:DefaultName>
+                          <rd:DefaultName>Textbox120</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3503,14 +3503,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ShipmentMethodDescription_Lbl3">
+                        <Textbox Name="Textbox24">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ShipmentMethodDescription_Lbl.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3519,7 +3519,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ShipmentMethodDescription_Lbl</rd:DefaultName>
+                          <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3532,14 +3532,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ShipmentMethodDescription3">
+                        <Textbox Name="Textbox25">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ShipmentMethodDescription.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -3550,7 +3550,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ShipmentMethodDescription</rd:DefaultName>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>

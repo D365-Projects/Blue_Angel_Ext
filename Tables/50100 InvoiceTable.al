@@ -15,6 +15,7 @@ table 50100 "Invoice SG"
         field(8; "ServicePeriodTo"; Date) { DataClassification = ToBeClassified; }
         field(9; "Qty"; Decimal) { DataClassification = ToBeClassified; }
         field(10; "SKU"; Code[20]) { DataClassification = ToBeClassified; }
+
         field(11; "ListPrice"; Decimal) { DataClassification = ToBeClassified; }
         field(12; "Discounted Price NotProrated"; Decimal) { DataClassification = ToBeClassified; }
         field(13; "UnitPrice"; Decimal) { DataClassification = ToBeClassified; }
@@ -42,6 +43,7 @@ table 50100 "Invoice SG"
         field(35; "MD-MONTGOMERY COUNTY,TELEPHONE"; Decimal) { DataClassification = ToBeClassified; Caption = 'MD - MONTGOMERY COUNTY, TELEPHONE TAX'; }
         field(36; "Line No"; Integer) { DataClassification = ToBeClassified; }
         field(37; "No."; Integer) { DataClassification = ToBeClassified; AutoIncrement = true; }
+        field(38; "Customer List Price"; Decimal) { DataClassification = ToBeClassified; }
     }
 
     keys
