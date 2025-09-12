@@ -562,7 +562,7 @@ page 50104 "Sherweb_Invoices"
             salesLine_lrec.Validate("Line Amount", Invoice_lrec.LineTotal);
 
             salesLine_lrec.Validate("Unit Cost", Invoice_lrec."Unit Cost");
-            salesLine_lrec.Validate("Unit Cost (LCY)", Invoice_lrec."Unit Cost");
+
             salesLine_lrec.Modify();
         end;
     end;
