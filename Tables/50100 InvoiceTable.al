@@ -15,10 +15,9 @@ table 50100 "Invoice SG"
         field(8; "ServicePeriodTo"; Date) { DataClassification = ToBeClassified; }
         field(9; "Qty"; Decimal) { DataClassification = ToBeClassified; }
         field(10; "SKU"; Code[20]) { DataClassification = ToBeClassified; }
-
         field(11; "ListPrice"; Decimal) { DataClassification = ToBeClassified; }
         field(12; "Discounted Price NotProrated"; Decimal) { DataClassification = ToBeClassified; }
-        field(13; "UnitPrice"; Decimal) { DataClassification = ToBeClassified; }
+        field(13; "Unit Cost"; Decimal) { DataClassification = ToBeClassified; }
         field(14; "LineTotal"; Decimal) { DataClassification = ToBeClassified; }
         field(15; "Organization SubTotal"; Decimal) { DataClassification = ToBeClassified; }
         field(16; "Reseller SubTotal"; Decimal) { DataClassification = ToBeClassified; }

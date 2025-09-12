@@ -7,6 +7,16 @@ pageextension 50109 "Sales Invoice Line" extends "Sales Invoice Subform"
             Visible = true;
             Caption = 'Notes';
         }
+        addafter("Unit Cost (LCY)")
+        {
+            field("Unit Cost"; Rec."Unit Cost")
+            {
+                ApplicationArea = All;
+                Caption = 'Unit Cost';
+                ToolTip = 'Unit Cost';
+
+            }
+        }
         modify("No.")
         {
             trigger OnAfterValidate()

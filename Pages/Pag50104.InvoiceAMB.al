@@ -73,7 +73,7 @@ page 50104 "Sherweb_Invoices"
                 {
                     ToolTip = 'Specifies the value of the Discounted Price NotProrated field.', Comment = '%';
                 }
-                field(UnitPrice; Rec.UnitPrice)
+                field("Unit Cost"; Rec."Unit Cost")
                 {
                     ToolTip = 'Specifies the value of the UnitPrice field.', Comment = '%';
                 }
@@ -192,7 +192,7 @@ page 50104 "Sherweb_Invoices"
             }
             action("Create Purchase order")
             {
-                Caption = 'Purchase Order';
+                Caption = 'Purchase Invoice';
                 Image = Purchase;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -212,7 +212,7 @@ page 50104 "Sherweb_Invoices"
             }
             action("Create Sales order")
             {
-                Caption = 'Sales Order';
+                Caption = 'Sales Invoice';
                 Image = Order;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -325,8 +325,8 @@ page 50104 "Sherweb_Invoices"
                 SOImportBuffer.ListPrice := 0;
             if not Evaluate(SOImportBuffer."Discounted Price NotProrated", GetValueAtCell(RowNo, 12)) then
                 SOImportBuffer."Discounted Price NotProrated" := 0;
-            if not Evaluate(SOImportBuffer.UnitPrice, GetValueAtCell(RowNo, 13)) then
-                SOImportBuffer.UnitPrice := 0;
+            if not Evaluate(SOImportBuffer."Unit Cost", GetValueAtCell(RowNo, 13)) then
+                SOImportBuffer."Unit Cost" := 0;
             if not Evaluate(SOImportBuffer.LineTotal, GetValueAtCell(RowNo, 14)) then
                 SOImportBuffer.LineTotal := 0;
             if not Evaluate(SOImportBuffer."Organization SubTotal", GetValueAtCell(RowNo, 15)) then
@@ -374,8 +374,8 @@ page 50104 "Sherweb_Invoices"
             if not Evaluate(SOImportBuffer."MD-MONTGOMERY COUNTY,TELEPHONE", GetValueAtCell(RowNo, 35)) then
                 SOImportBuffer."MD-MONTGOMERY COUNTY,TELEPHONE" := 0;
             if SOImportBuffer."Discounted Price NotProrated" <> 0.00 then
-                if SOImportBuffer.UnitPrice <> 0.00 then begin
-                    SOImportBuffer."Customer List Price" := (SOImportBuffer.UnitPrice / SOImportBuffer."Discounted Price NotProrated") * SOImportBuffer.ListPrice
+                if SOImportBuffer."Unit Cost" <> 0.00 then begin
+                    SOImportBuffer."Customer List Price" := (SOImportBuffer."Unit Cost" / SOImportBuffer."Discounted Price NotProrated") * SOImportBuffer.ListPrice
                 end
 
                 else
@@ -467,7 +467,7 @@ page 50104 "Sherweb_Invoices"
         Purchase_lrec."Service Period From" := Invoice_lrec."ServicePeriodFrom";
         Purchase_lrec."Service Period To" := Invoice_lrec."ServicePeriodTo";
         Purchase_lrec.Validate(Quantity, Invoice_lrec.Qty);
-        Purchase_lrec."Direct Unit Cost" := Invoice_lrec."UnitPrice";
+        Purchase_lrec."Direct Unit Cost" := Invoice_lrec."Unit Cost";
         Purchase_lrec."Line Amount" := Invoice_lrec."LineTotal";
         Purchase_lrec.Insert();
     end;
@@ -522,7 +522,7 @@ page 50104 "Sherweb_Invoices"
 
             end
             else begin
-                Message('Sales Invoice already exists for Customer %1 and External Document No. %2',
+                Message('Sales Invoice already exists for Customer %1 and Sherweb Invoice No. %2',
                     OrgCode, InvoiceAMBRec.InvoiceNo);
             end;
         end;
@@ -535,6 +535,8 @@ page 50104 "Sherweb_Invoices"
         salesLine_lrec: Record "Sales Line";
         Nextno: Integer;
     begin
+
+
         salesLine_lrec.SetRange("Document No.", Saleshdr."No.");
         salesLine_lrec.SetRange("Document Type", Saleshdr."Document Type"::Invoice);
         if salesLine_lrec.FindLast() then
@@ -542,21 +544,27 @@ page 50104 "Sherweb_Invoices"
         else
             Nextno := 10000;
         salesLine_lrec.Init();
-        salesLine_lrec."Type" := salesLine_lrec."Type"::Item;
+
         salesLine_lrec."Document Type" := Saleshdr."Document Type";
         salesLine_lrec."Document No." := Saleshdr."No.";
         salesLine_lrec."Line No." := Nextno;
+        if salesLine_lrec.Insert(true) then begin
+
+            salesLine_lrec."Type" := salesLine_lrec."Type"::Item;
         salesLine_lrec.Validate("No.", Invoice_lrec."SKU");
         salesLine_lrec.Validate("Service Period From", Invoice_lrec."ServicePeriodFrom");
         salesLine_lrec.Validate("Service Period To", Invoice_lrec."ServicePeriodTo");
         salesLine_lrec.Validate(Quantity, Invoice_lrec.Qty);
-        salesLine_lrec.Validate("Unit Cost", Invoice_lrec.UnitPrice);
-        if Invoice_lrec.UnitPrice <> 0 then begin
+            if Invoice_lrec."Customer List Price" <> 0 then begin
             salesLine_lrec.Validate("Unit Price", Invoice_lrec."Customer List Price")
         end;
         if Invoice_lrec.LineTotal <> 0 then
             salesLine_lrec.Validate("Line Amount", Invoice_lrec.LineTotal);
-        salesLine_lrec.Insert();
+
+            salesLine_lrec.Validate("Unit Cost", Invoice_lrec."Unit Cost");
+            salesLine_lrec.Validate("Unit Cost (LCY)", Invoice_lrec."Unit Cost");
+            salesLine_lrec.Modify();
+        end;
     end;
 }
 

@@ -63,7 +63,7 @@ page 50103 "Sherweb Invoices"
                 {
                     ToolTip = 'Specifies the value of the Discounted Price NotProrated field.', Comment = '%';
                 }
-                field(UnitPrice; Rec.UnitPrice)
+                field("Unit Cost"; Rec."Unit Cost")
                 {
                     ToolTip = 'Specifies the value of the UnitPrice field.', Comment = '%';
                 }
